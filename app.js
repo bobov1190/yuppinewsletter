@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 // 2. ТВОЙ PRODUCTION URL ИЗ n8n (без слова -test)
-const N8N_WEBHOOK_URL = 'https://n8n.vsellm.ru/webhook/a919449d-ba2d-419e-84d3-df503d4764ae';
+const N8N_WEBHOOK_URL = 'https://n8n.vsellm.ru/webhook-test/a919449d-ba2d-419e-84d3-df503d4764ae';
 
 // Инициализация
 const app = initializeApp(firebaseConfig);
