@@ -69,6 +69,9 @@ mainBtn.onclick = async () => {
             msg.innerText = "Успешный вход! С возвращением.";
             msg.style.color = "green";
 
+            // ПЕРЕКИДЫВАЕМ ЮЗЕРА
+            window.location.href = 'welcome.html';
+
         } else {
             // --- ЛОГИКА РЕГИСТРАЦИИ ---
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);

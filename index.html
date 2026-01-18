@@ -1,34 +1,133 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход / Регистрация</title>
+    <title>Yuppi - Welcome</title>
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f4f7f6; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-        h2 { text-align: center; color: #333; margin-bottom: 20px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; outline: none; }
-        input:focus { border-color: #4A90E2; }
-        button { width: 100%; padding: 12px; background: #4A90E2; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #357ABD; }
-        .toggle-btn { text-align: center; margin-top: 15px; font-size: 14px; color: #666; cursor: pointer; }
-        #message { margin-top: 15px; text-align: center; font-size: 14px; }
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            width: 360px;
+            text-align: left;
+            position: relative;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background: #444;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 20px;
+            filter: invert(1);
+        }
+
+        .header-text {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background: #fafafa;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .toggle {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 13px;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
+    <div class="card">
+        <div class="logo">🚀</div>
+        <div class="header-text" id="header-hint">Welcome to YuID!</div>
+        <h2 id="form-title">Sign Up</h2>
 
-<div class="container">
-    <h2 id="form-title">Регистрация</h2>
-    <input type="text" id="username" placeholder="Имя пользователя">
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Пароль">
-    <button id="main-btn">Создать аккаунт</button>
-    <div class="toggle-btn" id="toggle-form">Уже есть аккаунт? Войти</div>
-    <div id="message"></div>
-</div>
+        <div id="name-group">
+            <label>Your name</label>
+            <input type="text" id="username" placeholder="Name">
+        </div>
 
-<script type="module" src="app.js"></script>
+        <label>Your gmail</label>
+        <input type="email" id="email" placeholder="Email">
+
+        <label>Your password</label>
+        <input type="password" id="password" placeholder="Password">
+
+        <button id="main-btn">Sign Up</button>
+        <div class="toggle" id="toggle-form">Уже есть аккаунт? Войти</div>
+        <div id="message"></div>
+    </div>
+    <script type="module" src="app.js"></script>
 </body>
+
 </html>
