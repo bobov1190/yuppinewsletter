@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+/* --- Общие настройки --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Questrial", sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Убирает синюю рамку на мобилках */
+}
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* --- Карточка (Login / Signup) --- */
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* --- Страница Welcome --- */
+.welcome-card {
+    background: white;
+    padding: 50px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 450px;
+    animation: welcomeScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes welcomeScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Хедер --- */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.header-text {
+    color: #999;
+    font-size: 13px;
+}
+
+h1, h2 {
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+h2 { font-size: 22px; margin-bottom: 25px; }
+h1 { font-size: 28px; margin: 20px 0 10px; }
+
+p { color: #666; margin-bottom: 30px; }
+
+/* --- Поля ввода и Анимация --- */
+#name-group {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 120px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+/* Класс hidden, который добавляет JS */
+#name-group.hidden {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    pointer-events: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 16px; /* 16px предотвращает авто-зум на iPhone */
+    background: #fcfcfc;
+    transition: all 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1a1a1a;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.02);
+}
+
+/* --- Кнопки --- */
+button {
+    width: 100%;
+    padding: 16px;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: #000;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.exit-btn {
+    background: #f4f4f4;
+    color: #666;
+    margin-top: 10px;
+}
+
+.exit-btn:hover {
+    background: #eee;
+    color: #1a1a1a;
+}
+
+/* --- Дополнительные элементы --- */
+.toggle {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.toggle:hover {
+    color: #1a1a1a;
+}
+
+.family-tag {
+    background: #1a1a1a;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+#message {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+    min-height: 20px;
+}
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 480px) {
+    body {
+        background-color: white;
+        align-items: flex-start; /* Форма будет сверху на маленьких экранах */
+        padding-top: 40px;
+    }
+    .card, .welcome-card {
+        padding: 30px 20px;
+        box-shadow: none;
+        max-width: 100%;
+    }
+}

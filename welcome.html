@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Family</title>
-    <style>
-        body { background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; }
-        .welcome-card { background: white; padding: 50px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        h1 { color: #444; }
-        .family-tag { background: #444; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Family</title>
+    <link rel="stylesheet" href="./master.css">
 </head>
+
 <body>
     <div class="welcome-card">
-        <div style="font-size: 50px;">🎉</div>
-        <h1>Поздравляем!</h1>
-        <p>Теперь ты в семье <span class="family-tag">Yuppi</span></p>
-        <button onclick="location.href='index.html'" style="margin-top: 20px; cursor: pointer;">Выйти</button>
+        <div class="welcome-logo">
+            <img src="./logo.svg" alt="Yuppi Logo" style="width: 80px;">
+        </div>
+        <h1>Congratulations!</h1>
+        <p>You are now a part of the <span class="family-tag">Yuppi</span> family.</p>
+        <button onclick="location.href='index.html'" class="exit-btn">Sign Out</button>
     </div>
 </body>
+
 </html>
