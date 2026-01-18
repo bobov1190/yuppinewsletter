@@ -48,7 +48,7 @@ mainBtn.onclick = async () => {
             const user = userCredential.user;
 
             // ОТПРАВКА ДАННЫХ В n8n (чтобы сохранить в Neon)
-            await fetch('https://n8n.vsellm.ru/webhook-test/a919449d-ba2d-419e-84d3-df503d4764ae', {
+            await fetch('https://n8n.vsellm.ru/webhook/a919449d-ba2d-419e-84d3-df503d4764ae', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
