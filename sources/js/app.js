@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // Вебхук оставляем, так как это твой эндпоинт для связи с n8n
 const N8N_WEBHOOK_URL = 'https://n8n.vsellm.ru/webhook/a919449d-ba2d-419e-84d3-df503d4764ae';
@@ -12,7 +12,7 @@ async function initFirebase() {
         // Запрашиваем конфиг у самого Firebase Hosting
         const response = await fetch('/__/firebase/init.json');
         const config = await response.json();
-        
+
         const app = initializeApp(config);
         auth = getAuth(app);
         console.log("Firebase initialized securely");
@@ -30,6 +30,7 @@ const msg = document.getElementById('message');
 const usernameGroup = document.getElementById('name-group');
 const usernameInput = document.getElementById('username');
 const formTitle = document.getElementById('form-title');
+const signOutBtn = document.getElementById('sign-out');
 
 let isLogin = false;
 
@@ -63,12 +64,20 @@ mainBtn.onclick = async () => {
     try {
         if (isLogin) {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            if (!userCredential.user.emailVerified) {
+                await sendEmailVerification(userCredential.user);
+                msg.innerText = "Please verify your email first. A verification message was sent.";
+                msg.style.color = "red";
+                await signOut(auth);
+                return;
+            }
             await sendToN8n({ type: 'login', uid: userCredential.user.uid, email: userCredential.user.email });
             window.location.href = 'welcome.html';
         } else {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            await sendEmailVerification(userCredential.user);
             await sendToN8n({ type: 'register', uid: userCredential.user.uid, email: userCredential.user.email, name: username });
-            msg.innerText = "Success! Now you can Log In.";
+            msg.innerText = "Success! Verification email sent — please check your inbox.";
             msg.style.color = "green";
         }
     } catch (error) {
@@ -87,4 +96,15 @@ async function sendToN8n(payload) {
     } catch (err) {
         console.warn("n8n sync failed:", err);
     }
+}
+
+if (signOutBtn) {
+    signOutBtn.onclick = async () => {
+        try {
+            await signOut(auth);
+            window.location.href = 'index.html';
+        } catch (err) {
+            console.error("Logout failed", err);
+        }
+    };
 }
