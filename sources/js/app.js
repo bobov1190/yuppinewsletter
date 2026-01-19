@@ -72,7 +72,7 @@ mainBtn.onclick = async () => {
                 return;
             }
             await sendToN8n({ type: 'login', uid: userCredential.user.uid, email: userCredential.user.email });
-            window.location.href = 'welcome.html';
+            window.location.href = './pages/welcome.html';
         } else {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             await sendEmailVerification(userCredential.user);
